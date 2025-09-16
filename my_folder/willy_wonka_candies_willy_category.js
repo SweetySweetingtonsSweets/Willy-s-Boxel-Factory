@@ -1,14 +1,18 @@
+// Ensure category exists
+if (!elements.categories.special) {
+    elements.categories.special = "Special";
+}
+
 elements.liquefier = {
     color: "#33ccff",
-    behavior: behaviors.LIQUID,
+    behavior: behaviors.POWDER, // stays in place better than liquid
     category: "special",
-    state: "liquid",
-    density: 1000,
-    viscosity: 5,
+    state: "solid",
+    density: 2000,
     tick: function(pixel) {
         const dirs = [
-            [0,1], [0,-1], [1,0], [-1,0], // cardinal
-            [1,1], [-1,1], [1,-1], [-1,-1] // diagonals
+            [0,1], [0,-1], [1,0], [-1,0],
+            [1,1], [-1,1], [1,-1], [-1,-1]
         ];
         for (const [dx,dy] of dirs) {
             const x = pixel.x+dx;
@@ -19,16 +23,15 @@ elements.liquefier = {
             if (!target) continue;
             if (target.element === "liquefier") continue;
 
-            // create new element name like "stone_liquid"
             const liquidName = target.element + "_liquid";
 
-            // if not defined yet, define it dynamically
+            // Define the "liquid" version if missing
             if (!elements[liquidName]) {
                 let baseColor = elements[target.element]?.color || "#654321";
                 if (Array.isArray(baseColor)) baseColor = baseColor[0];
 
                 elements[liquidName] = {
-                    color: [baseColor, "#3399ff"], // original + bluish tint
+                    color: [baseColor, "#3399ff"], // tint
                     behavior: behaviors.LIQUID,
                     category: "liquids",
                     state: "liquid",
@@ -38,9 +41,8 @@ elements.liquefier = {
                 };
             }
 
-            // turn the neighbor into its liquid version
+            // Turn neighbor into its liquid version
             changePixel(target, liquidName);
         }
     },
 };
-
