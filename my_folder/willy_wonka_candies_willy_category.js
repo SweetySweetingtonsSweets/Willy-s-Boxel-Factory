@@ -1,5 +1,5 @@
 if (!elements.categories.custom) {
-    elements.categories.custom = "Custom";
+    elements.categories.custom = "custom";
 }
 
 elements.hello_test = {
@@ -12,13 +12,13 @@ elements.hello_test = {
 
 // Ensure category exists
 if (!elements.categories.special) {
-    elements.categories.special = "Special";
+    elements.categories.special = "special";
 }
 
 elements.liquefier = {
     color: "#33ccff",
     behavior: behaviors.POWDER, // stays in place better than liquid
-    category: "special",
+    category: "liquids",
     state: "solid",
     density: 2000,
     tick: function(pixel) {
