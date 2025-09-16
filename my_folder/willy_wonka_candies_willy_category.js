@@ -1,3 +1,15 @@
+if (!elements.categories.custom) {
+    elements.categories.custom = "Custom";
+}
+
+elements.hello_test = {
+    color: "#ff00ff",
+    behavior: behaviors.POWDER,
+    category: "custom",
+    state: "solid",
+};
+
+
 // Ensure category exists
 if (!elements.categories.special) {
     elements.categories.special = "Special";
