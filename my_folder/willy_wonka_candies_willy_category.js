@@ -1,20 +1,3 @@
-if (!elements.categories.custom) {
-    elements.categories.custom = "custom";
-}
-
-elements.hello_test = {
-    color: "#ff00ff",
-    behavior: behaviors.POWDER,
-    category: "custom",
-    state: "solid",
-};
-
-
-// Ensure category exists
-if (!elements.categories.special) {
-    elements.categories.special = "special";
-}
-
 elements.liquefier = {
     color: "#33ccff",
     behavior: behaviors.POWDER, // stays in place better than liquid
